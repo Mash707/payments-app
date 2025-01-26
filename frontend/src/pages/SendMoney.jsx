@@ -12,6 +12,7 @@ export const SendMoney = () => {
   const userName = location.state.userName;
   const transferUrl = "http://localhost:3000/api/v1/account/transfer";
   const [amount, setAmount] = useState(0);
+  const [invalid, setInavalid] = useState(false);
 
   const handleAmount = (event) => {
     setAmount(event.target.value);
@@ -30,7 +31,10 @@ export const SendMoney = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate("/acknowledgement", { state: { token, userName } });
-    } catch (error) {}
+      setInavalid(false);
+    } catch (error) {
+      setInavalid(true);
+    }
   };
 
   window.onpopstate = () => {
@@ -68,6 +72,11 @@ export const SendMoney = () => {
           >
             Initiate Transfer
           </button>
+          {invalid && (
+            <div className="text-lg font-medium text-red-500">
+              Insufficient Balance!!!!!
+            </div>
+          )}
         </div>
       </div>
     </div>
