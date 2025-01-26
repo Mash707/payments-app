@@ -16,7 +16,11 @@ export const Dashboard = () => {
 
   useEffect(() => {
     async function getData() {
-      const response = await axios({ method: "get", url: serverUrl });
+      const response = await axios({
+        method: "get",
+        url: serverUrl,
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setUsers(response.data.users);
     }
     async function getBalance() {
@@ -77,6 +81,7 @@ export const Dashboard = () => {
     const response = await axios({
       method: "get",
       url: serverUrl + "?filter=" + searchValue,
+      headers: { Authorization: `Bearer ${token}` },
     });
     setUsers(response.data.users);
   };

@@ -68,11 +68,20 @@ router.put("/", authMiddleware, async function (req, res) {
   return res.status(200).json({ message: "Updated successfully" });
 });
 
-router.get("/bulk", async function (req, res) {
+router.get("/bulk", authMiddleware, async function (req, res) {
   const filter = req.query.filter || "";
   const users = await User.find({
-    $or: [{ firstName: { $regex: filter } }, { lastName: { $regex: filter } }],
+    $and: [
+      { _id: { $ne: req.userId } },
+      {
+        $or: [
+          { firstName: { $regex: filter, $options: "i" } },
+          { lastName: { $regex: filter, $options: "i" } },
+        ],
+      },
+    ],
   });
+
   const formattedUsers = users.map((user) => ({
     firstName: user.firstName,
     lastName: user.lastName,
