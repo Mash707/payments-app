@@ -10,7 +10,8 @@ export const SendMoney = () => {
   const firstName = location.state.firstName;
   const lastName = location.state.lastName;
   const userName = location.state.userName;
-  const transferUrl = "http://localhost:3000/api/v1/account/transfer";
+  const transferUrl =
+    "https://backend-payments-app.onrender.com/api/v1/account/transfer";
   const [amount, setAmount] = useState(0);
   const [invalid, setInavalid] = useState(false);
 

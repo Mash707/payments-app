@@ -3,8 +3,10 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
-  const serverUrl = "http://localhost:3000/api/v1/user/bulk";
-  const balanceUrl = "http://localhost:3000/api/v1/account/balance";
+  const serverUrl =
+    "https://backend-payments-app.onrender.com/api/v1/user/bulk";
+  const balanceUrl =
+    "https://backend-payments-app.onrender.com/api/v1/account/balance";
 
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
