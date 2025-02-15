@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { number } = require("zod");
-const { yourMongoDbUrl } = require("../secret");
+const { yourMongoDbUrl } = require("./secret");
 mongoose.connect(yourMongoDbUrl);
 
 const userSchema = new mongoose.Schema({
