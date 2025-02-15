@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 const { number } = require("zod");
-const { yourMongoDbUrl } = require("./secret");
-const dotenv = require("dotenv");
-dotenv.config();
-const DATABASE_URL = process.env.DATABASE_URL;
-mongoose.connect(DATABASE_URL);
+const { yourMongoDbUrl } = require("../secret");
+mongoose.connect(yourMongoDbUrl);
 
 const userSchema = new mongoose.Schema({
   firstName: {
