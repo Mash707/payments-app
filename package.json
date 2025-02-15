@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.4.7"
+  },
+  "scripts": {
+    "build": "concurrently \"npm install\" \"cd backend && npm install\" \"cd frontend && npm install\"",
+    "start": "concurrently \"cd backend && node index.js\" \"serve -l 3001 -s frontend/dist\""
+  }
+}
